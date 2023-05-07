@@ -10,7 +10,11 @@ const TodoList = () => {
 		setNewTodo("");
 	};
 
-	const handleDeleteTodo = (index) => { };
+	const handleDeleteTodo = (index) => {
+		const newTodos = [...todos];
+		newTodos.splice(index, 1);
+		setTodos("")
+	};
 
 	const handleToggleTodo = (index) => { };
 
