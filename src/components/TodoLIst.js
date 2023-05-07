@@ -13,10 +13,14 @@ const TodoList = () => {
 	const handleDeleteTodo = (index) => {
 		const newTodos = [...todos];
 		newTodos.splice(index, 1);
-		setTodos("")
+		setTodos(newTodos)
 	};
 
-	const handleToggleTodo = (index) => { };
+	const handleToggleTodo = (index) => {
+		const newTodos = [...todos]
+		newTodos[index].checked = !newTodos[index].checked
+		setTodos(newTodos)
+	};
 
 	return (
 		<>
@@ -35,7 +39,13 @@ const TodoList = () => {
 							checked={todo.checked}
 							onChange={() => handleToggleTodo(index)}
 						/>
-						<span>{todo.text}</span>
+						<span
+							style={{
+								marginRight: "10px",
+								textDecoration: todo.checked ? "line-through" : "none"
+							}}>
+							{todo.text}
+						</span>
 						<button onClick={() => handleDeleteTodo(index)}>Delete</button>
 					</li>
 				))}
